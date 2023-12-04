@@ -72,5 +72,8 @@ public class ExamenService {
 		}
 		return listaEntrenadores;
 	}
-	
+	//encontrar un entrenador 
+	public void updateActiveEntrenadorTrue(Integer id) {
+		 repository.updateActiveEntrenadorTrue(id);
+	}
 }

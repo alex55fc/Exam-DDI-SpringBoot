@@ -62,4 +62,7 @@ public class ExamenRepository {
 	public List<Entrenador> findAllEntrenadores(){
 		return jdbcTemplate.query("SELECT * FROM entrenador", new EntrenadorRowMapper() );
 	}
+	public void  updateActiveEntrenadorTrue(Integer id) {
+		 jdbcTemplate.update("UPDATE entrenador SET active = true WHERE id = ?", id );
+	}
 }

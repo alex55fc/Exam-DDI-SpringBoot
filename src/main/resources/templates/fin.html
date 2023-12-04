@@ -36,6 +36,8 @@
 					<td th:text="${entrenadorx.id}"/>
 					<td th:text="${entrenadorx.nombre}"/>
 					<td th:text="${entrenadorx.active}"/>
+					<td><a th:href="@{'/deletePokemonsEntrenadorActivoById/'+${entrenadorx.id}}">Change to active</a></td>
+
 				</tr>
 			</tbody>
 		</table>

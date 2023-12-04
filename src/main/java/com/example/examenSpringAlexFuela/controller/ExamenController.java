@@ -113,4 +113,20 @@ public class ExamenController {
 		
 		return "fin";
 	}
+	@RequestMapping("/deletePokemonsEntrenadorActivoById/{id}")
+	public String deletePokemonsEntrenadorActivoById(@PathVariable Integer id, Model model) {
+		 service.updateActiveEntrenadorTrue(id);
+				
+		List<Entrenador> listaEntrenadores = service.listaEntrenadores();
+		model.addAttribute("listaEntrenadores", listaEntrenadores);
+
+		List<Pokemon> listaPokemons = service.listaPokemons();
+		model.addAttribute("listaPokemons", listaPokemons);
+		
+		List<Region> listaRegiones = service.listaRegiones();
+		model.addAttribute("listaRegiones", listaRegiones);
+		
+		return "fin";
+	}
+	
 }
