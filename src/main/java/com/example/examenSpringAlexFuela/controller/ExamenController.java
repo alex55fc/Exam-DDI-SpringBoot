@@ -130,17 +130,36 @@ public class ExamenController {
 	@RequestMapping("/deletePokemonsEntrenadorActivoById/{id}")
 	public String deletePokemonsEntrenadorActivoById(@PathVariable Integer id, Model model) {
 		 service.updateActiveEntrenadorTrue(id);
-				
+		//pokemons del entrenador 
+		 
 		List<Entrenador> listaEntrenadores = service.listaEntrenadores();
 		model.addAttribute("listaEntrenadores", listaEntrenadores);
 
-		List<Pokemon> listaPokemons = service.listaPokemons();
-		model.addAttribute("listaPokemons", listaPokemons);
+		List<Pokemon> listaPokemonsDeEntrenador = service.listaPokemonsDeEntrenador(id);
+		model.addAttribute("listaPokemonsDeEntrenador", listaPokemonsDeEntrenador);
 		
 		List<Region> listaRegiones = service.listaRegiones();
 		model.addAttribute("listaRegiones", listaRegiones);
 		
-		return "fin";
+		return "entrenadorManejo";
+	}
+	@RequestMapping("/deletePokemonById2/{id}")
+	public String deletePokemonDeEntrenador(@PathVariable Integer id, Model model) {
+		Pokemon pokemonx = service.findPokemonById(id);
+		service.deletePokemon(pokemonx);
+		model.addAttribute("mensajePokemon", "Pokemon deleted");
+		
+		List<Entrenador> listaEntrenadores = service.listaEntrenadores();
+		model.addAttribute("listaEntrenadores", listaEntrenadores);
+
+		List<Pokemon> listaPokemonsDeEntrenador = service.listaPokemonsDeEntrenador(id);
+		model.addAttribute("listaPokemonsDeEntrenador", listaPokemonsDeEntrenador);
+
+		
+		List<Region> listaRegiones = service.listaRegiones();
+		model.addAttribute("listaRegiones", listaRegiones);
+		
+		return "entrenadorManejo";
 	}
 	
 }

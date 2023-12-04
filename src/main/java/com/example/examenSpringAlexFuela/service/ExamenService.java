@@ -76,4 +76,12 @@ public class ExamenService {
 	public void updateActiveEntrenadorTrue(Integer id) {
 		 repository.updateActiveEntrenadorTrue(id);
 	}
+	//lista pokemon de un entrenador 
+	public List<Pokemon> listaPokemonsDeEntrenador(Integer id){
+		List<Pokemon> listaPokemon = repository.findAllPokemonsFromEntrenador(id);
+		for(Pokemon pokemonx : listaPokemon) {
+			System.out.println(pokemonx.getId() + pokemonx.getNombre() + pokemonx.getRegion().getId() + pokemonx.getEntrenador().getId());
+		}
+		return listaPokemon;
+	}
 }
