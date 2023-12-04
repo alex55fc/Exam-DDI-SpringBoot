@@ -31,6 +31,20 @@ public class ExamenController {
 		
 	}
 	
+	@RequestMapping("/irAFin")
+	public String irAFin(Model model) {
+		
+		List<Entrenador> listaEntrenadores = service.listaEntrenadores();
+		model.addAttribute("listaEntrenadores", listaEntrenadores);
+
+		List<Pokemon> listaPokemons = service.listaPokemons();
+		model.addAttribute("listaPokemons", listaPokemons);
+		
+		List<Region> listaRegiones = service.listaRegiones();
+		model.addAttribute("listaRegiones", listaRegiones);
+		
+		return "fin";
+	}
 	@RequestMapping("/insertRegion")
 	public String insertRegion(Region region, Model model) {
 		service.insertRegion(region);
