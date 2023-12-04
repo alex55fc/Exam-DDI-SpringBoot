@@ -46,4 +46,31 @@ public class ExamenService {
 	public void deletePokemon(Pokemon pokemonx) {
 		repository.deletePokemon(pokemonx);
 	}
+	//lista de pokemons 
+	public List<Region> listaRegiones(){
+		List<Region> listaRegiones = repository.findAllRegions();
+		for(Region regionx : listaRegiones) {
+			System.out.println(regionx.getId() + regionx.getNombre());
+		}
+		return listaRegiones;
+	}
+	
+	//encontrar la region 
+	public Region findRegionById(Integer id) {
+		Region regionx = repository.findRegionByI(id);
+		return regionx;
+	}
+	//borrar entrenadores
+	public void deleteRegion(Region regionx) {
+		repository.deleteRegion(regionx);
+	}
+	//lista de entrenadores 
+	public List<Entrenador> listaEntrenadores(){
+		List<Entrenador> listaEntrenadores = repository.findAllEntrenadores();
+		for(Entrenador entrenadorx : listaEntrenadores) {
+			System.out.println(entrenadorx.getId() + entrenadorx.getNombre() + entrenadorx.getActive());
+		}
+		return listaEntrenadores;
+	}
+	
 }

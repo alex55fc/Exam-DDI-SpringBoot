@@ -5,15 +5,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!--Duenio-->
+	<!--Region-->
 	<div style="display: table; margin:auto; margin-top:200px; border: solid 1px black; width: 50%;">
 		<span>Region</span>
 		<p th:text="${mensajeRegion}"></p>
 		<table border="1px" style="display: table; margin:auto; margin-top:20px; width: 50%;border-collapse: collapse;">
-
 			<th>Id</th>
 			<th>Nombre</th>	
-
+			<th colspan="2">Acciones</th>
+			<tbody>
+				<tr th:each="regionx: ${listaRegiones}">
+					<td th:text="${regionx.id}"/>
+					<td th:text="${regionx.nombre}"/>
+					<td><a th:href="@{'/deleteRegionById/'+${regionx.id}}">Delete</a></td>
+				</tr>
+			</tbody>
 		</table>
 	</div>
 	<div style="display: table; margin:auto; margin-top:200px; border: solid 1px black; width: 50%;">
@@ -24,6 +30,14 @@
 			<th>Id</th>
 			<th>Nombre</th>	
 			<th>Activo</th>
+			<th colspan="2">Acciones</th>
+			<tbody>
+				<tr th:each="entrenadorx: ${listaEntrenadores}">
+					<td th:text="${entrenadorx.id}"/>
+					<td th:text="${entrenadorx.nombre}"/>
+					<td th:text="${entrenadorx.active}"/>
+				</tr>
+			</tbody>
 		</table>
 	</div>
 	

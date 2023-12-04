@@ -35,6 +35,16 @@ public class ExamenController {
 	public String insertRegion(Region region, Model model) {
 		service.insertRegion(region);
 		model.addAttribute("mensajeRegion", "Region added");
+		
+		List<Entrenador> listaEntrenadores = service.listaEntrenadores();
+		model.addAttribute("listaEntrenadores", listaEntrenadores);
+
+		List<Pokemon> listaPokemons = service.listaPokemons();
+		model.addAttribute("listaPokemons", listaPokemons);
+		
+		List<Region> listaRegiones = service.listaRegiones();
+		model.addAttribute("listaRegiones", listaRegiones);
+		
 		return "fin";
 	}
 	
@@ -42,15 +52,31 @@ public class ExamenController {
 	public String insertEntrenador(Entrenador entrenador, Model model) {
 		service.insertEntrenador(entrenador);
 		model.addAttribute("mensajeEntre", "Entrenador added");
+		
+		List<Entrenador> listaEntrenadores = service.listaEntrenadores();
+		model.addAttribute("listaEntrenadores", listaEntrenadores);
+
+		List<Pokemon> listaPokemons = service.listaPokemons();
+		model.addAttribute("listaPokemons", listaPokemons);
+		
+		List<Region> listaRegiones = service.listaRegiones();
+		model.addAttribute("listaRegiones", listaRegiones);
+		
 		return "fin";
 	}
 	@RequestMapping("/insertPokemon")
 	public String insertPokemon(Pokemon pokemon, Model model) {
 		service.insertPokemon(pokemon);
 		model.addAttribute("mensajePokemon", "Pokemon added");
-		
+	
+		List<Entrenador> listaEntrenadores = service.listaEntrenadores();
+		model.addAttribute("listaEntrenadores", listaEntrenadores);
+
 		List<Pokemon> listaPokemons = service.listaPokemons();
 		model.addAttribute("listaPokemons", listaPokemons);
+		
+		List<Region> listaRegiones = service.listaRegiones();
+		model.addAttribute("listaRegiones", listaRegiones);
 		return "fin";
 	}
 	@RequestMapping("/deletePokemonById/{id}")
@@ -59,8 +85,32 @@ public class ExamenController {
 		service.deletePokemon(pokemonx);
 		model.addAttribute("mensajePokemon", "Pokemon deleted");
 		
+		List<Entrenador> listaEntrenadores = service.listaEntrenadores();
+		model.addAttribute("listaEntrenadores", listaEntrenadores);
+
 		List<Pokemon> listaPokemons = service.listaPokemons();
 		model.addAttribute("listaPokemons", listaPokemons);
+		
+		List<Region> listaRegiones = service.listaRegiones();
+		model.addAttribute("listaRegiones", listaRegiones);
+		
+		return "fin";
+	}
+	@RequestMapping("/deleteRegionById/{id}")
+	public String deleteRegion(@PathVariable Integer id, Model model) {
+		Region regionx = service.findRegionById(id);
+		service.deleteRegion(regionx);
+		model.addAttribute("mensajeRegion", "Region deleted");
+		
+		List<Entrenador> listaEntrenadores = service.listaEntrenadores();
+		model.addAttribute("listaEntrenadores", listaEntrenadores);
+
+		List<Pokemon> listaPokemons = service.listaPokemons();
+		model.addAttribute("listaPokemons", listaPokemons);
+		
+		List<Region> listaRegiones = service.listaRegiones();
+		model.addAttribute("listaRegiones", listaRegiones);
+		
 		return "fin";
 	}
 }

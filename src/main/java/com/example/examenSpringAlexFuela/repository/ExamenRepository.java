@@ -7,9 +7,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.example.examenSpringAlexFuela.model.Entrenador;
+import com.example.examenSpringAlexFuela.model.EntrenadorRowMapper;
 import com.example.examenSpringAlexFuela.model.Pokemon;
 import com.example.examenSpringAlexFuela.model.PokemonRowMapper;
 import com.example.examenSpringAlexFuela.model.Region;
+import com.example.examenSpringAlexFuela.model.RegionRowMapper;
 
 @Repository
 public class ExamenRepository {
@@ -42,5 +44,22 @@ public class ExamenRepository {
 	//borrar un pokemo
 	public void deletePokemon(Pokemon pokemonx) {
 		jdbcTemplate.update("DELETE FROM pokemon WHERE id=?", pokemonx.getId());
+	}
+	//all regions
+	public List<Region> findAllRegions(){
+		return jdbcTemplate.query("SELECT * FROM region", new RegionRowMapper() );
+	}
+	
+	public Region findRegionByI(Integer id) {
+		return jdbcTemplate.queryForObject("SELECT * FROM region WHERE id =?",
+				new RegionRowMapper(), id );
+	}
+	//borrar un pokemo
+	public void deleteRegion(Region regionx) {
+		jdbcTemplate.update("DELETE FROM region WHERE id=?", regionx.getId());
+	}
+	//all Entrenadores
+	public List<Entrenador> findAllEntrenadores(){
+		return jdbcTemplate.query("SELECT * FROM entrenador", new EntrenadorRowMapper() );
 	}
 }
