@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.examenSpringAlexFuela.model.Entrenador;
@@ -47,6 +48,16 @@ public class ExamenController {
 	public String insertPokemon(Pokemon pokemon, Model model) {
 		service.insertPokemon(pokemon);
 		model.addAttribute("mensajePokemon", "Pokemon added");
+		
+		List<Pokemon> listaPokemons = service.listaPokemons();
+		model.addAttribute("listaPokemons", listaPokemons);
+		return "fin";
+	}
+	@RequestMapping("/deletePokemonById/{id}")
+	public String deletePokemon(@PathVariable Integer id, Model model) {
+		Pokemon pokemonx = service.findPokemonById(id);
+		service.deletePokemon(pokemonx);
+		model.addAttribute("mensajePokemon", "Pokemon deleted");
 		
 		List<Pokemon> listaPokemons = service.listaPokemons();
 		model.addAttribute("listaPokemons", listaPokemons);

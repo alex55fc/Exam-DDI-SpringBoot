@@ -43,6 +43,7 @@
 					<td th:text="${pokemonx.nombre}"/>
 					<td th:text="${pokemonx.region.id}"/>
 					<td th:text="${pokemonx.entrenador.id}"/>
+					<td><a th:href="@{'/deletePokemonById/'+${pokemonx.id}}">Delete</a></td>
 				</tr>
 			</tbody>
 		</table>

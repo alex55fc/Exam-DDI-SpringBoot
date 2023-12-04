@@ -36,4 +36,14 @@ public class ExamenService {
 		}
 		return listaPokemon;
 	}
+	
+	//encontrar pokemon por id 
+	public Pokemon findPokemonById(Integer id) {
+		Pokemon pokemonx = repository.findePokemonByI(id);
+		return pokemonx;
+	}
+	//borrar pokemon
+	public void deletePokemon(Pokemon pokemonx) {
+		repository.deletePokemon(pokemonx);
+	}
 }

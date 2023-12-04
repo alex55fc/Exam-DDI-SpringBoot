@@ -32,6 +32,15 @@ public class ExamenRepository {
 	}
 	//all pokemons
 	public List<Pokemon> findAllPokemons(){
-		return jdbcTemplate.query("Select * FROM pokemon", new PokemonRowMapper() );
+		return jdbcTemplate.query("SELECT * FROM pokemon", new PokemonRowMapper() );
+	}
+	//find pokemon by id 
+	public Pokemon findePokemonByI(Integer id) {
+		return jdbcTemplate.queryForObject("SELECT * FROM pokemon WHERE id =?",
+				new PokemonRowMapper(), id );
+	}
+	//borrar un pokemo
+	public void deletePokemon(Pokemon pokemonx) {
+		jdbcTemplate.update("DELETE FROM pokemon WHERE id=?", pokemonx.getId());
 	}
 }
