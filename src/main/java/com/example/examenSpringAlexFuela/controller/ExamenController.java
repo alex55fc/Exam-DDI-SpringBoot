@@ -41,4 +41,10 @@ public class ExamenController {
 		model.addAttribute("mensajeEntre", "Entrenador added");
 		return "fin";
 	}
+	@RequestMapping("/insertPokemon")
+	public String insertPokemon(Pokemon pokemon, Model model) {
+		service.insertPokemon(pokemon);
+		model.addAttribute("mensajePokemon", "Pokemon added");
+		return "fin";
+	}
 }

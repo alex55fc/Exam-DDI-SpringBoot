@@ -1,9 +1,12 @@
 package com.example.examenSpringAlexFuela.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.examenSpringAlexFuela.model.Entrenador;
+import com.example.examenSpringAlexFuela.model.Pokemon;
 import com.example.examenSpringAlexFuela.model.Region;
 import com.example.examenSpringAlexFuela.repository.ExamenRepository;
 
@@ -19,5 +22,17 @@ public class ExamenService {
 	public void insertEntrenador(Entrenador entrenadorx) {
 		System.out.println("name" + entrenadorx.getNombre());
 		repository.insertEntrenador(entrenadorx);
+	}
+	
+	public void insertPokemon(Pokemon pokemonx) {
+		System.out.println("name" + pokemonx.getNombre());
+		repository.insertPokemon(pokemonx);
+	}
+	//lista de pokemons 
+	public List<Pokemon> listaPokemons(){
+		List<Pokemon> listaPokemon = repository.findAllPokemons();
+		for(Pokemon pokemonx : listaPokemon) {
+			System.out.println();
+		}
 	}
 }
