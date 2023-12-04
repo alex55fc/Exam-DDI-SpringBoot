@@ -15,6 +15,17 @@
 			<input type="submit" value="Enviar datos"/>
 		</form>
 	</div>
-
+	<div style="display: table; margin:auto; margin-top:200px; border: solid 1px black; width: 50%;">
+		<span>Insertar Entrenador</span>
+		<br>
+		<form th:action="@{/insertEntrenador}" th:object="${entrenadorx}">
+			<span>Nombre:</span>
+			<input type="text" th:field="*{nombre}"/>
+			<span>Activo:</span>
+			<input type="checkbox" th:field="*{active}" th:checked="${active}" />
+			
+			<input type="submit" value="Enviar datos"/>
+		</form>
+	</div>
 </body>
 </html>

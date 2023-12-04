@@ -34,4 +34,11 @@ public class ExamenController {
 		model.addAttribute("mensajeRegion", "Region added");
 		return "fin";
 	}
+	
+	@RequestMapping("/insertEntrenador")
+	public String insertEntrenador(Entrenador entrenador, Model model) {
+		service.insertEntrenador(entrenador);
+		model.addAttribute("mensajeEntre", "Entrenador added");
+		return "fin";
+	}
 }
