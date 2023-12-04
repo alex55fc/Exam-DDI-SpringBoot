@@ -26,6 +26,7 @@
 			<th>Activo</th>
 		</table>
 	</div>
+	
 	<div style="display: table; margin:auto; margin-top:200px; border: solid 1px black; width: 50%;">
 		<span>Pokemon</span>
 		<p th:text="${mensajePokemon}"></p>
@@ -35,12 +36,13 @@
 			<th>Nombre</th>	
 			<th>Region Id</th>
 			<th>Entrenador Id</th>
+			<th colspan="2">Acciones</th>
 			<tbody>
-				<tr th:each="dueniox: ${listaDuenios}">
-					<td th:text="${dueniox.dni}"/>
-					<td th:text="${dueniox.nombre}"/>
-					<td><a th:href="@{'/findDuenio/'+${dueniox.dni}}">Update</a></td>
-					<td><a th:href="@{'/deleteDuenioByDni/'+${dueniox.dni}}">Delete</a></td>
+				<tr th:each="pokemonx: ${listaPokemons}">
+					<td th:text="${pokemonx.id}"/>
+					<td th:text="${pokemonx.nombre}"/>
+					<td th:text="${pokemonx.region.id}"/>
+					<td th:text="${pokemonx.entrenador.id}"/>
 				</tr>
 			</tbody>
 		</table>

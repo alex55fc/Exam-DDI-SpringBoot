@@ -32,7 +32,8 @@ public class ExamenService {
 	public List<Pokemon> listaPokemons(){
 		List<Pokemon> listaPokemon = repository.findAllPokemons();
 		for(Pokemon pokemonx : listaPokemon) {
-			System.out.println();
+			System.out.println(pokemonx.getId() + pokemonx.getNombre() + pokemonx.getRegion().getId() + pokemonx.getEntrenador().getId());
 		}
+		return listaPokemon;
 	}
 }

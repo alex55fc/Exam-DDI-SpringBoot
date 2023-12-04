@@ -1,5 +1,7 @@
 package com.example.examenSpringAlexFuela.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,6 +47,9 @@ public class ExamenController {
 	public String insertPokemon(Pokemon pokemon, Model model) {
 		service.insertPokemon(pokemon);
 		model.addAttribute("mensajePokemon", "Pokemon added");
+		
+		List<Pokemon> listaPokemons = service.listaPokemons();
+		model.addAttribute("listaPokemons", listaPokemons);
 		return "fin";
 	}
 }
